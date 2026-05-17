@@ -1,17 +1,17 @@
-From 40354cc18ff468c194f790829c4b39eb6804cd16 Mon Sep 17 00:00:00 2001
+From 67d1020d5e27528e69b87010cc0554da11759a51 Mon Sep 17 00:00:00 2001
 From: local-build <local@build>
 Date: Wed, 8 Apr 2026 12:20:17 -0500
-Subject: [PATCH] Patched for Raspberry Pi 5
+Subject: [PATCH 1/2] Patched for Raspberry Pi 5
 
 ---
- hack/modules-arm64.txt | 376 ++++++++++++++++++++---------------------
- 1 file changed, 179 insertions(+), 197 deletions(-)
+ hack/modules-arm64.txt | 378 +++++++++++++++++++----------------------
+ 1 file changed, 178 insertions(+), 200 deletions(-)
 
 diff --git a/hack/modules-arm64.txt b/hack/modules-arm64.txt
-index 8df29effd..27a59e717 100644
+index 9888d2b0f..256bacee7 100644
 --- a/hack/modules-arm64.txt
 +++ b/hack/modules-arm64.txt
-@@ -1,238 +1,220 @@
+@@ -1,241 +1,219 @@
 -kernel/arch/arm64/lib/xor-neon.ko
 +modules.builtin.bin
 +modules.builtin.modinfo
@@ -45,7 +45,6 @@ index 8df29effd..27a59e717 100644
 -kernel/drivers/block/nbd.ko
 -kernel/drivers/block/ublk_drv.ko
 +kernel/crypto/xxhash_generic.ko
-+kernel/crypto/zstd.ko
 +kernel/net/ipv4/ip_gre.ko
 +kernel/net/tls/tls.ko
 +kernel/net/openvswitch/vport-gre.ko
@@ -91,6 +90,7 @@ index 8df29effd..27a59e717 100644
 -kernel/drivers/hid/hid-logitech.ko
 -kernel/drivers/hid/hid-microsoft.ko
 -kernel/drivers/hid/hid-monterey.ko
+-kernel/drivers/hid/hid-multitouch.ko
 -kernel/drivers/hid/hid-petalynx.ko
 -kernel/drivers/hid/hid-pl.ko
 -kernel/drivers/hid/hid-samsung.ko
@@ -230,6 +230,7 @@ index 8df29effd..27a59e717 100644
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-qcom-ethqos.ko
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-renesas-gbeth.ko
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-rk.ko
+-kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-sun55i.ko
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-sun8i.ko
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-sunxi.ko
 -kernel/drivers/net/ethernet/stmicro/stmmac/dwmac-tegra.ko
@@ -238,6 +239,7 @@ index 8df29effd..27a59e717 100644
 -kernel/drivers/net/ethernet/stmicro/stmmac/stmmac.ko
 -kernel/drivers/net/mdio.ko
 -kernel/drivers/net/pcs/pcs_xpcs.ko
+-kernel/drivers/net/pcs/pcs-rzn1-miic.ko
 -kernel/drivers/net/phy/dp83867.ko
 -kernel/drivers/net/usb/r8152.ko
 -kernel/drivers/net/vmxnet3/vmxnet3.ko

@@ -21,10 +21,10 @@ index edcb6dd..e2eb864 100644
 -  raspberrypi_kernel_version: stable_20250428
 -  raspberrypi_kernel_sha256: c95906cfbc7808de5860c6d86537bea22e3501f600a5209de59a86cb436886f6
 -  raspberrypi_kernel_sha512: 0ed5d490c491e590b5980dccf6fcac0dd3c47accbfacd40d91507c12801cff34fa6a1c68991c8a6c57bb259c909121414766f35a0b11c4bd5d62c3e11d710839
-+  # rpi-6.18.y branch, commit 8fa1bed55110 (2026-04-10), kernel 6.18.21
-+  raspberrypi_kernel_version: 8fa1bed55110
-+  raspberrypi_kernel_sha256: d2ffb5382c1ad2e313a3bd60d2c8fb1b8af025527abe7f95131035c10c2a419f
-+  raspberrypi_kernel_sha512: 565bd11afe89ef3e1955617191c9461b6365c56fef606baceec4ff612e2484d9077d11500ee0b77160f93cd39ec69ab3fce8e0cf76ba3df087903c3c8eff7290
++  # rpi-6.18.y branch, commit a72a0085aeac (2026-05-13), kernel 6.18.29
++  raspberrypi_kernel_version: a72a0085aeac23ac8aa76c90c476e20626046ea7
++  raspberrypi_kernel_sha256: 88c2c60538e4c79d59d5aaeed8925cf9a12ec4550345c71d1458984f3942eb94
++  raspberrypi_kernel_sha512: 00277666941c8bd3d147e12d963c936681d66258c8767179f4052fa49bc9860df0bfc6535d954dae46e4e84ea1de01010c916123f3211b0c2e1f1ebe9e7f9b91
  
    # renovate: datasource=github-tags depName=revolutionpi/linux
    revpi_kernel_version: v6.6.46-rt39-revpi7

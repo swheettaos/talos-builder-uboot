@@ -1,17 +1,17 @@
-From 5a381d7f8a423133557c08ec4bd5e2cb7d57fd57 Mon Sep 17 00:00:00 2001
+From 745c42555077606c05f0c95d6fb29bf713a85e43 Mon Sep 17 00:00:00 2001
 From: local-build <local@build>
 Date: Wed, 8 Apr 2026 12:31:42 -0500
-Subject: [PATCH] Makefile
+Subject: [PATCH 2/2] Makefile
 
 ---
- Makefile | 12 +++++++-----
- 1 file changed, 7 insertions(+), 5 deletions(-)
+ Makefile | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index bcad98f2b..7ee6bdbfe 100644
+index ea2d55caa..dfbb489f5 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -14,10 +14,12 @@ BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
+@@ -15,10 +15,12 @@ BRANCH ?= $(shell git rev-parse --abbrev-ref HEAD)
  REGISTRY_AND_USERNAME := $(IMAGE_REGISTRY)/$(USERNAME)
  NAME = Talos
  
@@ -25,25 +25,16 @@ index bcad98f2b..7ee6bdbfe 100644
  
  ARTIFACTS := _out
  
-@@ -94,7 +96,7 @@ GO_VERSION ?= 1.25
+@@ -97,7 +99,7 @@ GO_VERSION ?= 1.26
  # renovate: datasource=npm depName=markdownlint-cli
- MARKDOWNLINTCLI_VERSION ?= 0.45.0
+ MARKDOWNLINTCLI_VERSION ?= 0.48.0
  OPERATING_SYSTEM := $(shell uname -s | tr "[:upper:]" "[:lower:]")
 -ARCH := $(shell uname -m | sed 's/x86_64/amd64/' | sed 's/aarch64/arm64/')
 +ARCH := $(shell uname -m | $(SED) 's/x86_64/amd64/' | $(SED) 's/aarch64/arm64/')
  TALOSCTL_DEFAULT_TARGET := talosctl-$(OPERATING_SYSTEM)
  TALOSCTL_EXECUTABLE := $(PWD)/$(ARTIFACTS)/$(TALOSCTL_DEFAULT_TARGET)-$(ARCH)
  INTEGRATION_TEST := integration-test
-@@ -331,7 +333,7 @@ docker-%: ## Builds the specified target defined in the Dockerfile using the doc
- 	@$(MAKE) target-$* TARGET_ARGS="--output type=docker,dest=$(DEST)/$*.tar,name=$(REGISTRY_AND_USERNAME)/$*:$(IMAGE_TAG_OUT) $(TARGET_ARGS)"
- 
- registry-%: ## Builds the specified target defined in the Dockerfile using the image/registry output type. The build result will be pushed to the registry if PUSH=true.
--	@$(MAKE) target-$* TARGET_ARGS="--output type=image,name=$(REGISTRY_AND_USERNAME)/$*:$(IMAGE_TAG_OUT),rewrite-timestamp=true $(TARGET_ARGS)"
-+	@$(MAKE) target-$* TARGET_ARGS="--output type=image,name=$(REGISTRY_AND_USERNAME)/$*:$(IMAGE_TAG_OUT),rewrite-timestamp=false $(TARGET_ARGS)"
- 
- hack-test-%: ## Runs the specified script in ./hack/test with well known environment variables.
- 	@./hack/test/$*.sh
-@@ -695,7 +697,7 @@ reproducibility-test-docker-%: $(ARTIFACTS)
+@@ -724,7 +726,7 @@ reproducibility-test-docker-%: $(ARTIFACTS)
  	@mkdir -p _out1/ _out2/
  	@$(MAKE) docker-$* DEST=_out1/
  	@$(MAKE) docker-$* DEST=_out2/ TARGET_ARGS="--no-cache"
@@ -52,7 +43,7 @@ index bcad98f2b..7ee6bdbfe 100644
  	@rm -rf _out1/ _out2/
  
  reproducibility-test-local-%: $(ARTIFACTS)
-@@ -703,7 +705,7 @@ reproducibility-test-local-%: $(ARTIFACTS)
+@@ -732,7 +734,7 @@ reproducibility-test-local-%: $(ARTIFACTS)
  	@mkdir -p _out1/ _out2/
  	@$(MAKE) local-$* DEST=_out1/
  	@$(MAKE) local-$* DEST=_out2/ TARGET_ARGS="--no-cache"
