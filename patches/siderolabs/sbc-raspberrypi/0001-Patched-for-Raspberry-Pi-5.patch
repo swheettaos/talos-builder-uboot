@@ -1,16 +1,16 @@
-From 29e731fce087b21e3324005336539f9c92de242a Mon Sep 17 00:00:00 2001
+From 97318e2c76b172e5ff6590f6b3ad1715d12ba0e6 Mon Sep 17 00:00:00 2001
 From: local-build <local@build>
-Date: Wed, 8 Apr 2026 12:19:06 -0500
+Date: Thu, 21 May 2026 11:43:40 -0700
 Subject: [PATCH] Patched for Raspberry Pi 5
 
 ---
  Pkgfile                            |  8 ++++----
  artifacts/dtb/raspberrypi/pkg.yaml | 11 ++++++-----
- installers/rpi_5/src/config.txt    |  8 +++-----
- 3 files changed, 12 insertions(+), 15 deletions(-)
+ installers/rpi_5/src/config.txt    |  9 +++------
+ 3 files changed, 13 insertions(+), 15 deletions(-)
 
 diff --git a/Pkgfile b/Pkgfile
-index edcb6dd..e2eb864 100644
+index edcb6dd..9febca9 100644
 --- a/Pkgfile
 +++ b/Pkgfile
 @@ -13,10 +13,10 @@ vars:
@@ -61,7 +61,7 @@ diff --git a/installers/rpi_5/src/config.txt b/installers/rpi_5/src/config.txt
 index 9bef001..c2a6248 100644
 --- a/installers/rpi_5/src/config.txt
 +++ b/installers/rpi_5/src/config.txt
-@@ -1,10 +1,6 @@
+@@ -1,12 +1,9 @@
  # See https://www.raspberrypi.com/documentation/computers/configuration.html
 -# Reduce GPU memory to give more to CPU.
 -gpu_mem=32
@@ -75,6 +75,8 @@ index 9bef001..c2a6248 100644
 +dtparam=pciex1
 +dtparam=pciex1_gen=3
  # Forces the kernel loading system to assume a 64-bit kernel.
+ arm_64bit=1
+ # Run as fast as firmware / board allows.
 -- 
 2.50.1 (Apple Git-155)
 
