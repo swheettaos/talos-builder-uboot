@@ -100,6 +100,7 @@ kernel:
 	cd "$(CHECKOUTS_DIRECTORY)/pkgs" && \
 		$(MAKE) \
 			REGISTRY=$(REGISTRY) USERNAME=$(REGISTRY_USERNAME) PUSH=$(PUSH) \
+			TAG=$(PKGS_TAG) \
 			PLATFORM=linux/arm64 \
 			kernel
 
