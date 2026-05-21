@@ -6,8 +6,8 @@ Subject: [PATCH] Patched for Raspberry Pi 5
 ---
  Pkgfile                            |  8 ++++----
  artifacts/dtb/raspberrypi/pkg.yaml | 11 ++++++-----
- installers/rpi_5/src/config.txt    |  6 ------
- 3 files changed, 10 insertions(+), 15 deletions(-)
+ installers/rpi_5/src/config.txt    |  8 +++-----
+ 3 files changed, 12 insertions(+), 15 deletions(-)
 
 diff --git a/Pkgfile b/Pkgfile
 index edcb6dd..e2eb864 100644
@@ -58,10 +58,10 @@ index e64cf3e..4e75c83 100644
          mkdir -p arch/arm/boot/dts/overlays/
          cp -av /pkg/overlays/* arch/arm/boot/dts/overlays/
 diff --git a/installers/rpi_5/src/config.txt b/installers/rpi_5/src/config.txt
-index 9bef001..68d995c 100644
+index 9bef001..c2a6248 100644
 --- a/installers/rpi_5/src/config.txt
 +++ b/installers/rpi_5/src/config.txt
-@@ -1,10 +1,4 @@
+@@ -1,10 +1,6 @@
  # See https://www.raspberrypi.com/documentation/computers/configuration.html
 -# Reduce GPU memory to give more to CPU.
 -gpu_mem=32
@@ -71,6 +71,9 @@ index 9bef001..68d995c 100644
 -hdmi_safe:1=1
  # Load U-Boot.
  kernel=u-boot.bin
++# Enable PCIe for NVMe boot.
++dtparam=pciex1
++dtparam=pciex1_gen=3
  # Forces the kernel loading system to assume a 64-bit kernel.
 -- 
 2.50.1 (Apple Git-155)
